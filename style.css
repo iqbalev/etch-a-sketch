@@ -4,9 +4,20 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  gap: 10px;
+  font-family: "Jost", sans-serif;
+}
+
+.btn-grid-size {
+  padding: 5px 10px;
+  border: transparent;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .container {
@@ -19,4 +30,5 @@ body {
 
 .grid {
   border: 1px solid #000;
+  cursor: pointer;
 }
