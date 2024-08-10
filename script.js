@@ -1,4 +1,5 @@
 const container = document.querySelector(".container");
+const gridSizeButton = document.querySelector(".btn-grid-size");
 
 const createGrid = (gridSize) => {
   const totalGrids = gridSize * gridSize;
@@ -19,3 +20,13 @@ const createGrid = (gridSize) => {
 };
 
 createGrid(16);
+
+gridSizeButton.addEventListener("click", () => {
+  container.innerHTML = "";
+
+  const userGridInput = parseInt(prompt("Enter new grid size (1-100)."));
+
+  if (userGridInput > 100) return alert("Maximum grid size is 100.");
+
+  createGrid(userGridInput);
+});
