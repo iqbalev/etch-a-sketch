@@ -1,34 +1,61 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  gap: 10px;
-  font-family: "Jost", sans-serif;
+  gap: 50px;
+  font-family: "Schoolbell", sans-serif;
+  background-color: rgb(39, 38, 38);
 }
 
-.btn-grid-size {
-  padding: 5px 10px;
-  border: transparent;
-  font-family: inherit;
+.container.left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  color: rgb(194, 114, 114);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-grid-size,
+.btn-white-pen,
+.btn-rainbow-pen {
+  padding: 10px;
+  border: 1px solid rgb(194, 114, 114);
+  background-color: transparent;
+  font-family: "Urbanist";
   font-size: 1rem;
+  color: rgb(194, 114, 114);
   cursor: pointer;
 }
 
-.container {
+.btn-grid-size:hover,
+.btn-white-pen:hover,
+.btn-rainbow-pen:hover {
+  font-weight: bold;
+}
+
+.container.right {
   display: flex;
   flex-wrap: wrap;
   height: 500px;
   width: 500px;
-  border: 1px solid #000;
+  border: 1px solid rgb(194, 114, 114);
 }
 
-.grid {
-  border: 1px solid #000;
-  cursor: pointer;
+.grid:hover {
+  cursor: crosshair;
 }
