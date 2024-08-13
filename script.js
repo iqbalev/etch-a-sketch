@@ -3,6 +3,7 @@ const gridSizeButton = document.querySelector(".btn-grid-size");
 const whitePenButton = document.querySelector(".btn-white-pen");
 const rainbowPenButton = document.querySelector(".btn-rainbow-pen");
 const eraserButton = document.querySelector(".btn-eraser");
+const resetButton = document.querySelector(".btn-reset");
 
 const createGrid = (gridSize) => {
   const totalGrids = gridSize * gridSize;
@@ -64,9 +65,18 @@ const eraseDrawing = () => {
   });
 };
 
+const resetDrawing = () => {
+  const grids = document.querySelectorAll(".grid");
+
+  grids.forEach((grid) => {
+    grid.style.backgroundColor = "transparent";
+  });
+};
+
 gridSizeButton.addEventListener("click", () => createCustomGridSize());
 whitePenButton.addEventListener("click", () => startDrawing(getWhiteColor));
 rainbowPenButton.addEventListener("click", () => startDrawing(getRandomColor));
 eraserButton.addEventListener("click", () => eraseDrawing());
+resetButton.addEventListener("click", () => resetDrawing());
 
 createGrid(64);
