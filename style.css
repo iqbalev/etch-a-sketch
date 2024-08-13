@@ -32,7 +32,8 @@ body {
 
 .btn-grid-size,
 .btn-white-pen,
-.btn-rainbow-pen {
+.btn-rainbow-pen,
+.btn-eraser {
   padding: 10px;
   border: 1px solid rgb(194, 114, 114);
   background-color: transparent;
@@ -44,7 +45,8 @@ body {
 
 .btn-grid-size:hover,
 .btn-white-pen:hover,
-.btn-rainbow-pen:hover {
+.btn-rainbow-pen:hover,
+.btn-eraser:hover {
   font-weight: bold;
 }
 
