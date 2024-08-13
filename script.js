@@ -2,6 +2,7 @@ const container = document.querySelector(".container.right");
 const gridSizeButton = document.querySelector(".btn-grid-size");
 const whitePenButton = document.querySelector(".btn-white-pen");
 const rainbowPenButton = document.querySelector(".btn-rainbow-pen");
+const eraserButton = document.querySelector(".btn-eraser");
 
 const createGrid = (gridSize) => {
   const totalGrids = gridSize * gridSize;
@@ -26,7 +27,6 @@ const createCustomGridSize = () => {
     alert("Please enter a valid input.");
     return;
   }
-
   const gridSize = parseInt(userGridInput);
 
   if (gridSize < 1 || gridSize > 100) {
@@ -38,7 +38,7 @@ const createCustomGridSize = () => {
   createGrid(userGridInput);
 };
 
-const getPenMode = (selectedPen) => {
+const startDrawing = (selectedPen) => {
   container.addEventListener("mouseover", (e) => {
     if (e.target.classList.contains("grid")) {
       e.target.style.backgroundColor = selectedPen();
@@ -56,8 +56,17 @@ const getRandomColor = () => {
   return `rgb(${redColorValue}, ${greenColorValue}, ${blueColorValue})`;
 };
 
+const eraseDrawing = () => {
+  container.addEventListener("mouseover", (e) => {
+    if (e.target.classList.contains("grid")) {
+      e.target.style.backgroundColor = "transparent";
+    }
+  });
+};
+
 gridSizeButton.addEventListener("click", () => createCustomGridSize());
-whitePenButton.addEventListener("click", () => getPenMode(getWhiteColor));
-rainbowPenButton.addEventListener("click", () => getPenMode(getRandomColor));
+whitePenButton.addEventListener("click", () => startDrawing(getWhiteColor));
+rainbowPenButton.addEventListener("click", () => startDrawing(getRandomColor));
+eraserButton.addEventListener("click", () => eraseDrawing());
 
 createGrid(64);
