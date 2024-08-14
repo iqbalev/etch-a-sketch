@@ -1,5 +1,6 @@
 const container = document.querySelector(".container.right");
 const gridSizeButton = document.querySelector(".btn-grid-size");
+const toggleBorderButton = document.querySelector(".btn-toggle-border");
 const blackPenButton = document.querySelector(".btn-black-pen");
 const rainbowPenButton = document.querySelector(".btn-rainbow-pen");
 const eraserButton = document.querySelector(".btn-eraser");
@@ -39,6 +40,14 @@ const createCustomGridSize = () => {
   createGrid(userGridInput);
 };
 
+const toggleBorder = () => {
+  const grids = document.querySelectorAll(".grid");
+
+  grids.forEach((grid) => {
+    grid.classList.toggle("grid-border");
+  });
+};
+
 const startDrawing = (selectedPen) => {
   container.addEventListener("mouseover", (e) => {
     if (e.target.classList.contains("grid")) {
@@ -74,6 +83,7 @@ const resetDrawing = () => {
 };
 
 gridSizeButton.addEventListener("click", () => createCustomGridSize());
+toggleBorderButton.addEventListener("click", () => toggleBorder());
 blackPenButton.addEventListener("click", () => startDrawing(getBlackColor));
 rainbowPenButton.addEventListener("click", () => startDrawing(getRandomColor));
 eraserButton.addEventListener("click", () => eraseDrawing());
