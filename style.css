@@ -29,12 +29,13 @@ body {
   gap: 10px;
 }
 
-.btn-grid-size,
+.btn-toggle-border,
 .btn-rainbow-pen {
   margin-bottom: 20px;
 }
 
 .btn-grid-size,
+.btn-toggle-border,
 .btn-black-pen,
 .btn-rainbow-pen,
 .btn-eraser,
@@ -48,6 +49,7 @@ body {
 }
 
 .btn-grid-size:hover,
+.btn-toggle-border:hover,
 .btn-black-pen:hover,
 .btn-rainbow-pen:hover,
 .btn-eraser:hover,
@@ -68,6 +70,10 @@ body {
 
 .grid:hover {
   cursor: crosshair;
+}
+
+.grid-border {
+  border: 1px solid;
 }
 
 footer a {
