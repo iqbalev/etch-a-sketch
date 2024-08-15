@@ -3,8 +3,10 @@ const gridSizeButton = document.querySelector(".btn-grid-size");
 const toggleBorderButton = document.querySelector(".btn-toggle-border");
 const blackPenButton = document.querySelector(".btn-black-pen");
 const rainbowPenButton = document.querySelector(".btn-rainbow-pen");
+const customPenButton = document.querySelector(".btn-custom-pen");
+const colorPickerInput = document.querySelector(".input-color-picker");
 const eraserButton = document.querySelector(".btn-eraser");
-const resetButton = document.querySelector(".btn-reset");
+const clearButton = document.querySelector(".btn-clear");
 
 const createGrid = (gridSize) => {
   const totalGrids = gridSize * gridSize;
@@ -66,6 +68,15 @@ const getRandomColor = () => {
   return `rgb(${redColorValue}, ${greenColorValue}, ${blueColorValue})`;
 };
 
+const showColorPicker = () => {
+  colorPickerInput.click();
+};
+
+const getCustomColor = () => {
+  const selectedColor = colorPickerInput.value;
+  return selectedColor;
+};
+
 const eraseDrawing = () => {
   container.addEventListener("mouseover", (e) => {
     if (e.target.classList.contains("grid")) {
@@ -74,7 +85,7 @@ const eraseDrawing = () => {
   });
 };
 
-const resetDrawing = () => {
+const clearDrawing = () => {
   const grids = document.querySelectorAll(".grid");
 
   grids.forEach((grid) => {
@@ -86,7 +97,9 @@ gridSizeButton.addEventListener("click", () => createCustomGridSize());
 toggleBorderButton.addEventListener("click", () => toggleBorder());
 blackPenButton.addEventListener("click", () => startDrawing(getBlackColor));
 rainbowPenButton.addEventListener("click", () => startDrawing(getRandomColor));
+customPenButton.addEventListener("click", () => showColorPicker());
+colorPickerInput.addEventListener("input", () => startDrawing(getCustomColor));
 eraserButton.addEventListener("click", () => eraseDrawing());
-resetButton.addEventListener("click", () => resetDrawing());
+clearButton.addEventListener("click", () => clearDrawing());
 
 createGrid(64);
