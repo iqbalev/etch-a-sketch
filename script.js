@@ -7,6 +7,7 @@ const customPenButton = document.querySelector(".btn-custom-pen");
 const colorPickerInput = document.querySelector(".input-color-picker");
 const eraserButton = document.querySelector(".btn-eraser");
 const clearButton = document.querySelector(".btn-clear");
+let isHoldingMouseButton = false;
 
 const createGrid = (gridSize) => {
   const totalGrids = gridSize * gridSize;
@@ -16,7 +17,7 @@ const createGrid = (gridSize) => {
     grid.classList.add("grid");
 
     const gridPercentage = 100 / gridSize;
-    grid.style.flex = `0 0 ${gridPercentage}%`;
+    grid.style.flex = `1 0 ${gridPercentage}%`;
 
     container.appendChild(grid);
   }
@@ -52,7 +53,7 @@ const toggleBorder = () => {
 
 const startDrawing = (selectedPen) => {
   container.addEventListener("mouseover", (e) => {
-    if (e.target.classList.contains("grid")) {
+    if (isHoldingMouseButton && e.target.classList.contains("grid")) {
       e.target.style.backgroundColor = selectedPen();
     }
   });
@@ -79,7 +80,7 @@ const getCustomColor = () => {
 
 const eraseDrawing = () => {
   container.addEventListener("mouseover", (e) => {
-    if (e.target.classList.contains("grid")) {
+    if (isHoldingMouseButton && e.target.classList.contains("grid")) {
       e.target.style.backgroundColor = "transparent";
     }
   });
@@ -93,6 +94,12 @@ const clearDrawing = () => {
   });
 };
 
+container.addEventListener("mousedown", (e) => {
+  e.preventDefault();
+  isHoldingMouseButton = true;
+});
+
+container.addEventListener("mouseup", () => (isHoldingMouseButton = false));
 gridSizeButton.addEventListener("click", () => createCustomGridSize());
 toggleBorderButton.addEventListener("click", () => toggleBorder());
 blackPenButton.addEventListener("click", () => startDrawing(getBlackColor));
